@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="meClient">
+<head>
+    <title></title>
+    <!--<script src="lib/require.js" data-main="main"></script>-->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/noty/packaged/jquery.noty.packaged.min.js"></script>
+    <script type="text/javascript" src="lib/vendor/jquery.lettering.js"></script>
+    <script type="text/javascript" src="lib/vendor/jquery.textillate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.0.5/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.7.0/angularfire.js"></script>
+    <script src="https://cdn.firebase.com/js/simple-login/1.2.5/firebase-simple-login.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+
+</head>
+<body>
+<span hidden>{% raw %}</span>
+<div id="edenMain" ng-controller="meController">
+    <div class="splash" ng-hide="hideSplash || loading">
+        THIS IS THE SPLASH SCREEN -- {{test}}
+        <div class="loginDiv" ng-hide="loggedIn">
+            Email: <input ng-model="email">
+            Password: <input ng-model="password">
+            <button ng-click="regButton()">Register</button>
+            <button ng-click="cheatConnect()">CheatConnect</button>
+
+            {{test}}
+
+            <br>
+        </div>
+    </div>
+    <div ng-show="hideSplash">
+        <div id="stageTop">
+            <span class="label" title="{{email}}">UID: </span>{{uid}}
+            <span class="label">Bits: </span>{{bits}}
+            <span class="label">Cycle: </span>{{time.cycle}}
+            <span class="label">Sub-Cycle: </span>{{time.deci}}:{{time.centi}}:{{time.milli}}
+            <span class="label">Weather: </span>{{weather}}
+        </div><br>
+        <span ng-show="mobs">Under Attack!</span>
+        <div ng-repeat="mob in mobs">
+
+                    <li>
+                        <span ng-click="mobInfo(mob)">{{mob.type}}</span>
+                        ( HP: {{mob.hp}} )
+                        [ <button ng-click="attack(mob)">Attack</button> ]
+                    </li>
+        </div>
+        <div id="stageMain">
+            <div class="welcome" data-in-effect="fadeIn" data-in-shuffle="true" ng-show="showGreet">
+                {{greeting001}}
+            </div>
+            <br>
+            <form ng-submit="deflectAtkWord()"><input id="atkWordField" ng-model="atkWord"></form>
+            <br>
+            <button ng-click="action('rollDice')">Roll Dice</button>
+            <br><br>
+            <button ng-click="logout()">Logout</button>
+
+            <!--<div id="aniTest" ng-hide="atShow">{{aniTest}}</div>-->
+        </div>
+    </div>
+</div>
+<span hidden>{% endraw %}</span>
+
+<script src="./lib/main.js"></script>
+</body>
+</html>

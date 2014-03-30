@@ -1,0 +1,23 @@
+.welcome{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -400px;
+    width: 800px;
+    height: 800px;
+    z-index: -1;
+
+    font-size: 3em;
+}
+
+#stageMain{
+    margin-top: 200px;
+    text-align: center;
+}
+
+.label{
+    font-weight: bolder;
+    margin-left: 10px;
+    margin-right: 5px;
+}
